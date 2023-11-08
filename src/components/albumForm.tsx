@@ -10,7 +10,7 @@ export default function AlbumForm({onSubmitAlbumForm}: Props) {
 
     function handleSubmit() {
         const baseUrl = 'https://jsonplaceholder.typicode.com/photos'
-        fetch(albumNumber && `${baseUrl}?albumId=${albumNumber}` || baseUrl)
+        fetch((albumNumber && `${baseUrl}?albumId=${albumNumber}`) || baseUrl)
             .then(response => response.json())
             .then(data => onSubmitAlbumForm(data))
             .catch(error => console.error(error));
