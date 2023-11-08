@@ -31,3 +31,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+##Using the App
+You can enter a number in the text field to search for specific albums or leave it blank to return all. 
+Records will be displayed in the table.
+The table will default to 10 records per page but can be increased to 25 or 100 if desired.
+
