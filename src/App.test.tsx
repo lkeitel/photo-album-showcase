@@ -8,4 +8,9 @@ describe('photo album showcase', () =>{
     const albumTextBox = screen.getByLabelText('Album Number')
     expect(albumTextBox).toBeInTheDocument();
   });
+  it('displays a button for submitting the request', () => {
+    render(<App/>);
+    const goButton = screen.getByRole('button', {name: 'Go'})
+    expect(goButton).toBeInTheDocument();
+  });
 })
