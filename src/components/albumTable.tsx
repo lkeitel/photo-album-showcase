@@ -17,11 +17,11 @@ export default function AlbumTable({albumDetails}: Props) {
                 </TableHead>
                 <TableBody>
                     {albumDetails.map((row) => (
-                        <TableRow>
+                        <TableRow key={row.id}>
                             <TableCell>{row.albumId}</TableCell>
                             <TableCell>{row.id}</TableCell>
                             <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.url}</TableCell>
+                            <TableCell><img src={row.thumbnailUrl}/></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
