@@ -2,6 +2,7 @@ import React from 'react';
 import {fireEvent, render, screen, waitFor} from '@testing-library/react';
 import App from './App';
 import userEvent from "@testing-library/user-event";
+import {act} from "react-dom/test-utils";
 
 describe('photo album showcase', () =>{
   let originalFetch: { (input: RequestInfo | URL, init?: RequestInit | undefined): Promise<Response>; (input: RequestInfo | URL, init?: RequestInit | undefined): Promise<Response>; };
@@ -28,7 +29,9 @@ describe('photo album showcase', () =>{
     render(<App/>);
     const goButton = screen.getByRole('button', {name: 'Go'})
     const mockedWindow = jest.spyOn(window, 'fetch');
-    userEvent.click(goButton);
+    act(() => {
+      userEvent.click(goButton);
+    })
     expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos');
     await waitFor(()=>
     {
@@ -41,7 +44,9 @@ describe('photo album showcase', () =>{
     const goButton = screen.getByRole('button', {name: 'Go'})
     const mockedWindow = jest.spyOn(window, 'fetch');
     fireEvent.change(screen.getByLabelText('Album Number') , {target: {value: 12}})
-    userEvent.click(goButton);
-    expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos?albumId=12');
+    act(() => {
+      userEvent.click(goButton);
+    })
+      expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos?albumId=12');
   });
 })
