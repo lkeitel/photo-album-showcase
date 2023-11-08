@@ -20,6 +20,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
+        fontSize: 18,
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -47,9 +48,9 @@ export default function AlbumTable({albumDetails}: Props) {
         setPage(0);
     };
     return (
-        <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+        <Paper sx={{overflow: 'hidden', marginX: 10, marginY: 5}}>
             <TableContainer  >
-                <Table >
+                <Table size="small" >
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Album Id</StyledTableCell>
@@ -66,7 +67,7 @@ export default function AlbumTable({albumDetails}: Props) {
                             <StyledTableCell>{row.albumId}</StyledTableCell>
                             <StyledTableCell>{row.id}</StyledTableCell>
                             <StyledTableCell>{row.title}</StyledTableCell>
-                            <StyledTableCell><img src={row.thumbnailUrl} width={50} height={50}/></StyledTableCell>
+                            <StyledTableCell><img src={row.thumbnailUrl} width={50} height={50} alt=''/></StyledTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
