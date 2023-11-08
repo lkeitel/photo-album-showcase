@@ -5,7 +5,7 @@ type Props = {
 }
 export default function AlbumTable({albumDetails}: Props) {
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{margin: 30}}>
             <Table>
                 <TableHead>
                     <TableRow>

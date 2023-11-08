@@ -8,6 +8,7 @@ function App() {
 
     return (
         <div>
+            <h1 style={{textAlign: 'center'}}>Photo Album Showcase</h1>
             <AlbumForm onSubmitAlbumForm={setAlbumDetails}/>
             <AlbumTable albumDetails={albumDetails}/>
         </div>

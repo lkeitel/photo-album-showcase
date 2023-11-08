@@ -19,7 +19,7 @@ export default function AlbumForm({onSubmitAlbumForm}: Props) {
     return (
         <div>
             <Grid container spacing={3}>
-                <Grid item xs={6}>
+                <Grid item xs={1} style={{marginLeft: 40}}>
                     <TextField
                         id="filled-number"
                         label="Album Number"
@@ -33,7 +33,7 @@ export default function AlbumForm({onSubmitAlbumForm}: Props) {
                             setAlbumNumber(parseInt(event.target.value))
                         }}/>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item style={{marginLeft: 20}}>
                     <Button onClick={handleSubmit} color='primary'>Go</Button>
                 </Grid>
             </Grid>
