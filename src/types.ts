@@ -1,5 +1,3 @@
-import React from "react";
-
 export type AlbumDetail = {
     albumId: number;
     id: number;

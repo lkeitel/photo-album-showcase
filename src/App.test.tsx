@@ -22,17 +22,7 @@ describe('photo album showcase', () =>{
     global.fetch=originalFetch;
   })
 
-  it('displays a textbox for entering the album number', () => {
-    render(<App />);
-    const albumTextBox = screen.getByLabelText('Album Number')
-    expect(albumTextBox).toBeInTheDocument();
-  });
 
-  it('displays a button for submitting the request', () => {
-    render(<App/>);
-    const goButton = screen.getByRole('button', {name: 'Go'})
-    expect(goButton).toBeInTheDocument();
-  });
 
   it('loads album details when button is pressed', async () => {
     render(<App/>);
@@ -44,5 +34,14 @@ describe('photo album showcase', () =>{
     {
       expect(screen.getByText('number 1')).toBeInTheDocument();
     });
+  });
+
+  it('requests just the album info when button is pressed', async () => {
+    render(<App/>);
+    const goButton = screen.getByRole('button', {name: 'Go'})
+    const mockedWindow = jest.spyOn(window, 'fetch');
+    fireEvent.change(screen.getByLabelText('Album Number') , {target: {value: 12}})
+    userEvent.click(goButton);
+    expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos?albumId=12');
   });
 })
