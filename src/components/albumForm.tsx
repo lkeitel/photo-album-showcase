@@ -27,10 +27,14 @@ export default function AlbumForm({onSubmitAlbumForm}: Props) {
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        InputProps={{ inputProps: { min: 0} }}
                         variant="standard"
                         value={albumNumber || ''}
                         onChange={(event) => {
-                            setAlbumNumber(parseInt(event.target.value))
+                            let newValue = parseInt(event.target.value);
+                            if (newValue <= 0)
+                                newValue=0
+                            setAlbumNumber(newValue)
                         }}/>
                 </Grid>
                 <Grid item >

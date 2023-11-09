@@ -41,7 +41,6 @@ describe('photo album showcase', () =>{
     const goButton = screen.getByRole('button', {name: 'Go'})
     const mockedWindow = jest.spyOn(window, 'fetch');
     fireEvent.change(screen.getByLabelText('Album Number') , {target: {value: 12}})
-    expect(await screen.findByLabelText('Album Number')).toBeInTheDocument();
     act(() => {
       userEvent.click(goButton);
     })
