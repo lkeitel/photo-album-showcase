@@ -33,10 +33,7 @@ describe('photo album showcase', () =>{
       userEvent.click(goButton);
     })
     expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos');
-    await waitFor(()=>
-    {
-      expect(screen.getByText('number 1')).toBeInTheDocument();
-    });
+    expect(await screen.findByText('number 1')).toBeInTheDocument();
   });
 
   it('requests just the album info when button is pressed', async () => {
@@ -44,9 +41,11 @@ describe('photo album showcase', () =>{
     const goButton = screen.getByRole('button', {name: 'Go'})
     const mockedWindow = jest.spyOn(window, 'fetch');
     fireEvent.change(screen.getByLabelText('Album Number') , {target: {value: 12}})
+    expect(await screen.findByLabelText('Album Number')).toBeInTheDocument();
     act(() => {
       userEvent.click(goButton);
     })
-      expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos?albumId=12');
+    expect(mockedWindow.mock.calls[0][0]).toEqual('https://jsonplaceholder.typicode.com/photos?albumId=12');
+    expect(await screen.findByText('number 1')).toBeInTheDocument();
   });
 })

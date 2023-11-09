@@ -28,7 +28,7 @@ export default function AlbumForm({onSubmitAlbumForm}: Props) {
                             shrink: true,
                         }}
                         variant="standard"
-                        value={albumNumber}
+                        value={albumNumber || ''}
                         onChange={(event) => {
                             setAlbumNumber(parseInt(event.target.value))
                         }}/>
